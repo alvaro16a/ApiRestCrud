@@ -1,6 +1,7 @@
 package com.apirestcrud.apirestcrud.services;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import com.apirestcrud.apirestcrud.models.UsuarioModel;
 import com.apirestcrud.apirestcrud.repositories.UsuarioRepository;
@@ -18,8 +19,26 @@ public class UsuarioService {
         return (ArrayList<UsuarioModel>) usuarioRepository.findAll();
     }
 
-    public UsuarioModel gUsuario(UsuarioModel usuario){ //se guarda un usuario que se recibe sin id
+    public UsuarioModel guardarUsuario(UsuarioModel usuario){ //se guarda un usuario que se recibe sin id
         return usuarioRepository.save(usuario);
     }
+
+    public Optional<UsuarioModel> obtenerPorId(Long id){
+        return usuarioRepository.findById(id);
+    }
+
+    public ArrayList<UsuarioModel> obtenerPorPrioridad(Integer prioridad ){
+        return usuarioRepository.findByPrioridad(prioridad);
+    }
+
+    public boolean eliminarUsuario(Long id){
+        try {
+            usuarioRepository.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 
 }

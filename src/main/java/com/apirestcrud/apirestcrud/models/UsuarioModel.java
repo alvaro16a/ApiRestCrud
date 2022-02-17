@@ -3,14 +3,16 @@ package com.apirestcrud.apirestcrud.models;
 import javax.persistence.Entity;
 import javax.persistence.*;
 
-@Entity
-@Table(name = "usuario")
+@Entity// especificamos que es un modelo real 
+@Table(name = "usuario") //especificamos el nombre de la tabla para que no sea el de la clase
 public class UsuarioModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
+    @Id // se le notifica  a la tabla que la siguiente variable es un id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//los valores del id son generados automaticamente y se auto incrementan
+    @Column(unique = true, nullable = false)// los id son unicos y no peden ser nulos
     private Long id;
+
+
     private String nombre;
     private String email;
     private Integer prioridad;

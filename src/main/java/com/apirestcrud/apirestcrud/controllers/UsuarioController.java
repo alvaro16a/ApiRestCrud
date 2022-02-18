@@ -36,6 +36,10 @@ public class UsuarioController {
         return this.usuarioService.obtenerCorreos();
     }
 
+    @GetMapping(value = "/reporte")//devuelve un reporte con informacion de los usuarios
+    public ArrayList<String> hacerReporte(){
+        return this.usuarioService.hacerReporte();
+    }
 
     @GetMapping(value = "/correos/{prioridad}")//devuelve un Lista con todos los correos de los usuarios deacuerdo a su priodidad
     public ArrayList<String> obtenerCorreosPorPrioridad(@PathVariable("prioridad") Integer prioridad){

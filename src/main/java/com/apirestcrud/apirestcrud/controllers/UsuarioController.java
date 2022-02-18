@@ -26,27 +26,33 @@ public class UsuarioController {
     @Autowired //instancia la clase UsuarioService automaticamente
     UsuarioService usuarioService;
 
-    @GetMapping()
+    @GetMapping()//devuelve una lista con todos los usuarios
     public ArrayList<UsuarioModel> obtenerUsuarios(){
         return usuarioService.obtenerUsuarios();
     }
 
-    @PostMapping()
+    @GetMapping(value = "/correos")//devuelve un Lista con todos los correos de los usuarios
+    public ArrayList<String> obtenerCorreos(){
+        return this.usuarioService.obtenerCorreos();
+    }
+
+
+    @PostMapping() //guarda un nuevo usuario o carga la informacion de alguno existente por el id
     public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario){
         return this.usuarioService.guardarUsuario(usuario);
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/{id}")//encuentra un usuario por su id
     public Optional<UsuarioModel> obtenerUsuarioPorId(@PathVariable("id") Long id){
         return this.usuarioService.obtenerPorId(id);
     }
 
-    @GetMapping(path = "/query")
+    @GetMapping(path = "/query")//optiene los usuarios que tienen determinada prioridad
     public ArrayList<UsuarioModel> obtenerUsuarioPorPrioridad(@RequestParam("prioridad") Integer prioridad){
         return this.usuarioService.obtenerPorPrioridad(prioridad);
     }
 
-    @DeleteMapping(path = "/{id}" )
+    @DeleteMapping(path = "/{id}" )//al recibir una solicitud delete elimina el usuario con una determinada id
     public String eliminarPorID(@PathVariable("id") Long id){
         boolean ok=this.usuarioService.eliminarUsuario(id);
         if(ok){

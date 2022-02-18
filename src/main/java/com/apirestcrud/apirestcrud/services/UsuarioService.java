@@ -19,6 +19,15 @@ public class UsuarioService {
         return (ArrayList<UsuarioModel>) usuarioRepository.findAll();
     }
 
+    public ArrayList<String> obtenerCorreos(){
+        ArrayList<UsuarioModel> usuarios= (ArrayList<UsuarioModel>)usuarioRepository.findAll();
+        ArrayList<String> correos = new ArrayList();
+        for (UsuarioModel nombre: usuarios) {
+            correos.add(nombre.getEmail());
+          }
+          return correos;
+    }
+
     public UsuarioModel guardarUsuario(UsuarioModel usuario){ //se guarda un usuario que se recibe sin id
         return usuarioRepository.save(usuario);
     }

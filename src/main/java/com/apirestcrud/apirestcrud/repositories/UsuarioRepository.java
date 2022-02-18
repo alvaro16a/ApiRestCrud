@@ -1,7 +1,6 @@
 package com.apirestcrud.apirestcrud.repositories;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import com.apirestcrud.apirestcrud.models.UsuarioModel;
 

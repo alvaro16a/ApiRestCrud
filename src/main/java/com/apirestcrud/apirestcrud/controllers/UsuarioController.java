@@ -37,6 +37,12 @@ public class UsuarioController {
     }
 
 
+    @GetMapping(value = "/correos/{prioridad}")//devuelve un Lista con todos los correos de los usuarios deacuerdo a su priodidad
+    public ArrayList<String> obtenerCorreosPorPrioridad(@PathVariable("prioridad") Integer prioridad){
+        return this.usuarioService.obtenerCorreosPorPrioridad(prioridad);
+    }
+
+
     @PostMapping() //guarda un nuevo usuario o carga la informacion de alguno existente por el id
     public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario){
         return this.usuarioService.guardarUsuario(usuario);
